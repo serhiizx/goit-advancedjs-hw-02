@@ -51,12 +51,16 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
+}
+
 const display = {
   update({ days, hours, minutes, seconds }) {
-    countdown.days.innerText = String(days).padStart(2, '0');
-    countdown.hours.innerText = String(hours).padStart(2, '0');
-    countdown.minutes.innerText = String(minutes).padStart(2, '0');
-    countdown.seconds.innerText = String(seconds).padStart(2, '0');
+    countdown.days.innerText = addLeadingZero(days);
+    countdown.hours.innerText = addLeadingZero(hours);
+    countdown.minutes.innerText = addLeadingZero(minutes);
+    countdown.seconds.innerText = addLeadingZero(seconds);
   },
   setButtonLabel(running) {
     button.textContent = running ? 'Stop' : 'Start';
@@ -77,7 +81,6 @@ function renderTime() {
 }
 
 function isFinished() {
-  console.log('isFinished', userSelectedDate, Date.now(), userSelectedDate - Date.now(), userSelectedDate - Date.now() < 0)
   return userSelectedDate - Date.now() < 0;
 }
 
