@@ -59,14 +59,17 @@ export default defineConfig(({ command }) => {
       rollupOptions: {
         input: glob.sync('./src/*.html'),
         output: {
-          manualChunks: id => (id.includes('node_modules') ? 'vendor' : undefined),
+          manualChunks: id =>
+            id.includes('node_modules') ? 'vendor' : undefined,
           entryFileNames: '[name]-[hash].js',
           chunkFileNames: 'js/[name]-[hash].js',
           assetFileNames: ({ name }) => {
             if (name?.endsWith('.css')) return 'css/[name]-[hash][extname]';
             if (name?.match(/\.(png|jpe?g|webp|gif)$/i)) {
               // Plugin-emitted assets include full path in name → preserves folder structure
-              return name.includes('/') ? '[name]-[hash][extname]' : 'images/[name]-[hash][extname]';
+              return name.includes('/')
+                ? '[name]-[hash][extname]'
+                : 'images/[name]-[hash][extname]';
             }
             return 'assets/[name]-[hash][extname]';
           },

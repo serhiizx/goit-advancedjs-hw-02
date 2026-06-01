@@ -70,14 +70,13 @@ const display = {
   },
 };
 
-
 function render() {
-  display.setButtonEnabled(!!userSelectedDate)
+  display.setButtonEnabled(!!userSelectedDate);
   renderTime();
 }
 
 function renderTime() {
-  display.update(getRemainDate())
+  display.update(getRemainDate());
 }
 
 function isFinished() {
@@ -105,7 +104,7 @@ function main() {
 
       if (selectedMs < now) {
         toast('warning', 'Please choose a date in the future');
-        userSelectedDate = null
+        userSelectedDate = null;
         return;
       }
 
@@ -120,14 +119,13 @@ function main() {
 function handleButton() {
   if (isTimerStarted()) {
     stopTimer();
-
   } else {
     startTimer();
   }
 }
 
 function startTimer() {
-  display.setButtonLabel(true)
+  display.setButtonLabel(true);
   intervalId = setInterval(() => {
     if (isFinished()) {
       return stopTimer();
@@ -140,8 +138,8 @@ function stopTimer() {
   if (intervalId) {
     clearInterval(intervalId);
   }
-  display.setButtonLabel(false)
-  display.setButtonEnabled(false)
+  display.setButtonLabel(false);
+  display.setButtonEnabled(false);
 }
 
 main();
