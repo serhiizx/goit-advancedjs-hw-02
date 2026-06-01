@@ -15,8 +15,30 @@
   </head>
   <body>
     <main>
-      <div class="container">
-        timers 1
+      <div class="container flex-col w-fit">
+        <div class="flex-row">
+          <input class="form-input" type="datetime" placeholder="Select datetime..." id="datetime-picker" />
+          <button type="button" class="form-submit" id="button-start" disabled="disabled">Start</button>
+        </div>
+
+        <div class="timer">
+          <div class="field">
+            <span class="value" data-days>00</span>
+            <span class="label">Days</span>
+          </div>
+          <div class="field">
+            <span class="value" data-hours>00</span>
+            <span class="label">Hours</span>
+          </div>
+          <div class="field">
+            <span class="value" data-minutes>00</span>
+            <span class="label">Minutes</span>
+          </div>
+          <div class="field">
+            <span class="value" data-seconds>00</span>
+            <span class="label">Seconds</span>
+          </div>
+        </div>
       </div>
     </main>
     <script type="module" src="./js/1-timers.js"></script>
