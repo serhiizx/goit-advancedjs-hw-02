@@ -16,7 +16,28 @@
   <body>
     <main>
       <div class="container">
-        snackbar
+        <form class="form flex-col">
+          <label>
+            Delay (ms)
+            <input type="number" name="delay" required />
+          </label>
+
+          <fieldset>
+            <legend>State</legend>
+            <label>
+              <input type="radio" name="state" value="fulfilled" required />
+              Fulfilled
+            </label>
+            <label>
+              <input type="radio" name="state" value="rejected" required />
+              Rejected
+            </label>
+          </fieldset>
+
+          <button type="submit">Create notification</button>
+        </form>
+
+
       </div>
     </main>
     <script type="module" src="./js/2-snackbar.js"></script>
