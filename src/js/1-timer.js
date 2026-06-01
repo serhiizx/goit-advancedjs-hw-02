@@ -84,7 +84,8 @@ function isFinished() {
 }
 
 function getRemainDate() {
-  return convertMs(userSelectedDate - Date.now());
+  const now = Date.now();
+  return convertMs((userSelectedDate || now) - now);
 }
 
 function isTimerStarted() {
@@ -138,8 +139,10 @@ function stopTimer() {
   if (intervalId) {
     clearInterval(intervalId);
   }
+  userSelectedDate = null;
   display.setButtonLabel(false);
   display.setButtonEnabled(false);
+  render();
 }
 
 main();
