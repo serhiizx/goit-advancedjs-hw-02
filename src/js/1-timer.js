@@ -4,7 +4,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import 'flatpickr/dist/flatpickr.min.css';
 
-const button = document.querySelector('#button-start');
+const button = document.querySelector('[data-start]');
 const countdown = {
   days: document.querySelector('.timer [data-days]'),
   hours: document.querySelector('.timer [data-hours]'),
