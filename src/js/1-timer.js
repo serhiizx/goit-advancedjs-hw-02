@@ -103,6 +103,7 @@ function main() {
       if (selectedMs < now) {
         toast('warning', 'Please choose a date in the future');
         userSelectedDate = null;
+        render();
         return;
       }
 
