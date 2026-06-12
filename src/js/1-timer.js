@@ -62,16 +62,13 @@ const display = {
     countdown.minutes.innerText = addLeadingZero(minutes);
     countdown.seconds.innerText = addLeadingZero(seconds);
   },
-  setButtonLabel(running) {
-    button.textContent = running ? 'Stop' : 'Start';
-  },
   setButtonEnabled(enabled) {
     button.disabled = !enabled;
   },
 };
 
 function render() {
-  display.setButtonEnabled(!!userSelectedDate);
+  display.setButtonEnabled(!!userSelectedDate && !isTimerStarted());
   renderTime();
 }
 
@@ -114,35 +111,33 @@ function main() {
     },
   });
 
+  render();
   button.addEventListener('click', handleButton);
 }
 
 function handleButton() {
   if (isTimerStarted()) {
-    stopTimer();
-  } else {
-    startTimer();
+    return;
   }
+  startTimer();
 }
 
 function startTimer() {
-  display.setButtonLabel(true);
   intervalId = setInterval(() => {
     if (isFinished()) {
       return stopTimer();
     }
     render();
   }, 1000);
+  display.setButtonEnabled(false);
 }
 
 function stopTimer() {
-  if (intervalId) {
-    clearInterval(intervalId);
-  }
+  clearInterval(intervalId);
+  intervalId = null;
   userSelectedDate = null;
-  display.setButtonLabel(false);
-  display.setButtonEnabled(false);
   render();
+  toast('success', "Time's up!");
 }
 
 main();
